@@ -1,4 +1,4 @@
-service: springboot-lambda
+service: springboot-lambda-test
 
 provider:
   name: aws
@@ -7,7 +7,7 @@ provider:
   timeout: 60
 
 package:
-  artifact: build/distributions/springboot-lambda.zip
+  artifact: build/libs/lambdatest-1.0.jar
 
 functions:
   users:
