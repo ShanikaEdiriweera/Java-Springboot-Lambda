@@ -1,0 +1,28 @@
+service: springboot-lambda
+
+provider:
+  name: aws
+  runtime: java8
+  memorySize: 1536
+  timeout: 60
+
+package:
+  artifact: build/distributions/springboot-lambda.zip
+
+functions:
+  users:
+    handler: com.serverless.LambdaHandler
+    events:
+      - http:
+          path: users
+          method: get
+          cors: true
+      - http:
+          path: users/{lastName}
+          method: get
+          cors: true
+      - http:
+          path: users/create
+          method: post
+          cors: true
+           

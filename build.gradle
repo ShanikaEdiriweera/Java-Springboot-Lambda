@@ -1,0 +1,70 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+    }
+}
+
+plugins {
+    id "org.sonarqube" version "2.5"
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", System.getenv("SONAR_HOST")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'lambdatest'
+    version =  '1.0'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("io.springfox:springfox-swagger2:2.2.2")
+    compile("io.springfox:springfox-swagger-ui:2.2.2")
+
+    testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    compile (
+//            'org.springframework.boot:spring-boot-starter',
+            'org.springframework.boot:spring-boot-starter-data-jpa',
+            'com.amazonaws:aws-lambda-java-core:1.1.0',
+            'com.amazonaws:aws-lambda-java-log4j:1.0.0',
+            'com.h2database:h2'
+    )
+    // https://mvnrepository.com/artifact/com.amazonaws.serverless/aws-serverless-java-container-spring
+    compile group: 'com.amazonaws.serverless', name: 'aws-serverless-java-container-spring', version: '1.0'
+
+}
+
+test {
+    afterTest { desc, result ->
+        println "Executing test ${desc.name} [{$desc.className}] with result: ${result.resultType}"
+    }
+}
+
+
