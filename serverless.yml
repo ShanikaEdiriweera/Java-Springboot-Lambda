@@ -1,4 +1,4 @@
-service: springboot-lambda-test-heshan
+service: springboot-lambda-test
 
 provider:
   name: aws
@@ -22,7 +22,7 @@ vpc: # Optional VPC. But if you use VPC then both subproperties (securityGroupId
       - subnet-3209eb19
 
 functions:
-  springboot-hs:
+  greeting:
     handler: com.sysco.lambdatest.LambdaHandler
     events:
       - http:
