@@ -40,10 +40,10 @@ dependencies {
     compileOnly("org.springframework:spring-context-indexer:5.0.4.RELEASE")
     compile("io.springfox:springfox-swagger2:2.2.2")
     compile("io.springfox:springfox-swagger-ui:2.2.2")
-
+//    compile("org.springframework:spring-jdbc")
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '1.5.10.RELEASE', ext: 'pom'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.0.0.RELEASE'
+    compile 'mysql:mysql-connector-java'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
 //    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.0.0.RELEASE'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'

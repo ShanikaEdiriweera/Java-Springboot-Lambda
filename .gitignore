@@ -38,4 +38,4 @@ bin/
 
 .serverless/
 
-src/main/resources/application.properties
+src/main/resources/applicationdb.properties
