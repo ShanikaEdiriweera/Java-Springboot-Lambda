@@ -1,12 +1,12 @@
-package sysco.lambdatest.resources;
+package com.sysco.lambdatest.resources;
 
-import sysco.lambdatest.entities.Greeting;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.sysco.lambdatest.entities.Greeting;
 
 import java.util.concurrent.atomic.AtomicLong;
 

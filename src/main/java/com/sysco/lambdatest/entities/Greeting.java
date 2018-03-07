@@ -1,4 +1,4 @@
-package sysco.lambdatest.entities;
+package com.sysco.lambdatest.entities;
 
 public class Greeting {
 

@@ -3,26 +3,43 @@ service: springboot-lambda-test
 provider:
   name: aws
   runtime: java8
-  memorySize: 1536
+  memorySize: 1024
   timeout: 60
+  region: us-east-1
 
 package:
-  artifact: build/libs/lambdatest-1.0.jar
+  artifact: build/libs/java-springboot-lambda-test-1.0-SNAPSHOT-all.jar
+
+vpc: # Optional VPC. But if you use VPC then both subproperties (securityGroupIds and subnetIds) are required
+    securityGroupIds:
+      - rds-launch-wizard-1 (sg-878860f1)
+    subnetIds:
+      - subnet-bf13b3c8
+      - subnet-d6bd7f8f
+      - subnet-b3079ad6
+      - subnet-1f53cc13
+      - subnet-10462c2a
+      - subnet-3209eb19
 
 functions:
-  users:
-    handler: com.serverless.LambdaHandler
+  greeting:
+    handler: com.sysco.lambdatest.LambdaHandler
     events:
       - http:
-          path: users
+          path: v1.0/greeting
           method: get
           cors: true
       - http:
-          path: users/{lastName}
+          path: v1.0/hello
           method: get
           cors: true
+
       - http:
-          path: users/create
+          path: v1.0/items/add
           method: post
           cors: true
-           
+
+      - http:
+          path: v1.0/items
+          method: get
+          cors: true

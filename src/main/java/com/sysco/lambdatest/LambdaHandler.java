@@ -1,4 +1,4 @@
-package sysco.lambdatest;
+package com.sysco.lambdatest;
 
 import com.amazonaws.serverless.exceptions.ContainerInitializationException;
 import com.amazonaws.serverless.proxy.model.AwsProxyRequest;
@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 
-public class StreamLambdaHandler implements RequestStreamHandler {
+public class LambdaHandler implements RequestStreamHandler {
     private static SpringBootLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
     static {
         try {

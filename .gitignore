@@ -37,3 +37,5 @@ bin/
 .lazybones/
 
 .serverless/
+
+src/main/resources/application.properties

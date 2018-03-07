@@ -1,26 +1,32 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: AWS Serverless Spring Boot API - my.service2::my-service2
+Description: AWS Serverless Spring Boot API - com.sysco.lambdatest::com-sysco-lambdatest
 Resources:
-  MyService2Function:
+  LambdaTestFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: my.service2.StreamLambdaHandler::handleRequest
+      Handler: com.sysco.lambdatest.LambdaHandler::handleRequest
       Runtime: java8
-      CodeUri: target/my-service2-1.0-SNAPSHOT.jar
-      MemorySize: 512
+      CodeUri: build/libs/java-springboot-lambda-test-1.0-SNAPSHOT-all.jar
+      MemorySize: 1024
       Policies: AWSLambdaBasicExecutionRole
-      Timeout: 30
+      Timeout: 60
       Events:
-        GetResource:
+        Greeting:
           Type: Api
           Properties:
-            Path: /{proxy+}
+            Path: /v1.0/greeting
+            Method: any
+
+        Hello:
+          Type: Api
+          Properties:
+            Path: /v1.0/hello
             Method: any
 
 Outputs:
-  MyService2Api:
+  LambdaTestApi:
     Description: URL for application
     Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ping'
     Export:
-      Name: MyService2Api
+      Name: LambdaTestApi
